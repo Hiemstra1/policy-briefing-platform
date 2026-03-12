@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var body = document.body;
     var modeHeadline = document.getElementById("mode-headline");
     var modeDescription = document.getElementById("mode-description");
-    var sidebar = document.getElementById("personal-sidebar");
-    var sidebarToggle = document.getElementById("sidebar-toggle");
-    var sidebarClose = document.getElementById("sidebar-close");
+    var feedPanel = document.querySelector("[data-feed-panel]");
+    var feedToggle = document.querySelector("[data-feed-toggle]");
+    var feedClose = document.querySelector("[data-feed-close]");
 
     var modeCopy = {
         "logged-out": {
@@ -26,28 +26,25 @@ document.addEventListener("DOMContentLoaded", function () {
             modeDescription.textContent = modeCopy[authState].description;
         }
 
-        if (sidebarToggle) {
-            sidebarToggle.hidden = authState !== "logged-in";
-        }
-
-        if (sidebar) {
-            sidebar.setAttribute("aria-hidden", "true");
+        if (feedPanel) {
+            feedPanel.setAttribute("aria-hidden", "true");
         }
     }
 
-    if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener("click", function () {
-            sidebar.setAttribute("aria-hidden", "false");
+    if (feedToggle && feedPanel) {
+        feedToggle.addEventListener("click", function () {
+            var isHidden = feedPanel.getAttribute("aria-hidden") === "true";
+            feedPanel.setAttribute("aria-hidden", isHidden ? "false" : "true");
         });
     }
 
-    if (sidebarClose && sidebar) {
-        sidebarClose.addEventListener("click", function () {
-            sidebar.setAttribute("aria-hidden", "true");
+    if (feedClose && feedPanel) {
+        feedClose.addEventListener("click", function () {
+            feedPanel.setAttribute("aria-hidden", "true");
         });
     }
 
-    if (modeHeadline || modeDescription || sidebarToggle) {
+    if (modeHeadline || modeDescription || feedToggle) {
         syncHomepageState();
     }
 });

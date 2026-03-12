@@ -365,6 +365,15 @@ button.button {
     display: none;
 }
 
+.floating-feed-panel {
+    position: fixed;
+    right: 24px;
+    bottom: 104px;
+    top: auto;
+    z-index: 40;
+    max-width: calc(100vw - 48px);
+}
+
 .sidebar-header {
     display: flex;
     justify-content: space-between;
@@ -404,10 +413,6 @@ button.button {
     padding-left: 18px;
 }
 
-body[data-auth="logged-in"] .sidebar-toggle {
-    display: inline-block;
-}
-
 body[data-auth="logged-in"] .login-link {
     display: none;
 }
@@ -422,6 +427,45 @@ body[data-auth="logged-in"] [data-mode-panel="logged-out"] {
 
 body[data-auth="logged-in"] [data-mode-panel="logged-in"] {
     display: block;
+}
+
+.floating-feed-button {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 45;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 18px 14px 14px;
+    background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+    color: white;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.floating-feed-button:hover {
+    transform: translateY(-2px);
+}
+
+.floating-feed-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    font-size: 22px;
+    line-height: 1;
+}
+
+.floating-feed-label {
+    white-space: nowrap;
 }
 
 /* ===== Responsive ===== */
@@ -441,6 +485,11 @@ body[data-auth="logged-in"] [data-mode-panel="logged-in"] {
 
     .homepage-shell {
         padding: 24px;
+    }
+
+    .floating-feed-panel {
+        right: 20px;
+        bottom: 96px;
     }
 }
 
@@ -462,7 +511,13 @@ body[data-auth="logged-in"] [data-mode-panel="logged-in"] {
     .personal-sidebar {
         width: 100%;
         flex-basis: auto;
-        position: static;
+    }
+
+    .floating-feed-panel {
+        left: 20px;
+        right: 20px;
+        bottom: 88px;
+        max-width: none;
     }
 
     .feature-grid {

@@ -23,19 +23,18 @@
         </nav>
         <div class="header-actions">
             <a class="button login-link" href="onboarding/">Inloggen</a>
-            <button type="button" class="button secondary sidebar-toggle" id="sidebar-toggle" hidden>Open mijn feed</button>
         </div>
     </div>
 </header>
 
 <main class="homepage-shell">
-    <aside class="personal-sidebar" id="personal-sidebar" aria-hidden="true">
+    <aside class="personal-sidebar floating-feed-panel" id="personal-sidebar" aria-hidden="true" data-feed-panel>
         <div class="sidebar-header">
             <div>
                 <p class="eyebrow">Persoonlijke modus</p>
                 <h2>Jouw feed</h2>
             </div>
-            <button class="icon-button" id="sidebar-close" type="button" aria-label="Zijbalk sluiten">Sluiten</button>
+            <button class="icon-button" id="sidebar-close" type="button" aria-label="Zijbalk sluiten" data-feed-close>Sluiten</button>
         </div>
 
         <section class="sidebar-section">
@@ -164,6 +163,11 @@
         </section>
     </div>
 </main>
+
+<button type="button" class="floating-feed-button" aria-label="Open mijn feed" data-feed-toggle>
+    <span class="floating-feed-icon">+</span>
+    <span class="floating-feed-label">Mijn feed</span>
+</button>
 
 <script src="js/app.js"></script>
 </body>
