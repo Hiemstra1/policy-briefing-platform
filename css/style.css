@@ -320,11 +320,7 @@ button.button {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(180deg, rgba(7, 11, 18, 0.7) 0%, rgba(10, 16, 26, 0.72) 26%, rgba(13, 20, 31, 0.78) 60%, rgba(8, 14, 23, 0.84) 100%),
-        radial-gradient(circle at 18% 26%, rgba(113, 36, 36, 0.26), transparent 28%),
-        radial-gradient(circle at 78% 24%, rgba(176, 126, 55, 0.18), transparent 24%),
-        radial-gradient(circle at 52% 78%, rgba(59, 89, 138, 0.18), transparent 24%);
+    background: linear-gradient(180deg, rgba(7, 11, 18, 0.52) 0%, rgba(10, 16, 26, 0.56) 26%, rgba(13, 20, 31, 0.62) 60%, rgba(8, 14, 23, 0.7) 100%);
 }
 
 .video-background-media {
@@ -332,7 +328,7 @@ button.button {
     height: 100%;
     object-fit: cover;
     object-position: center center;
-    filter: saturate(0.8) brightness(0.42) contrast(1.05);
+    filter: saturate(0.82) brightness(0.5) contrast(1.04);
     transform: scale(1.04);
 }
 
