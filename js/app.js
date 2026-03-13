@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var feedPanel = document.querySelector("[data-feed-panel]");
     var feedToggle = document.querySelector("[data-feed-toggle]");
     var feedClose = document.querySelector("[data-feed-close]");
+    var homepageSplash = document.querySelector("[data-homepage-splash]");
 
     var modeCopy = {
         "logged-out": {
@@ -46,5 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (modeHeadline || modeDescription || feedToggle) {
         syncHomepageState();
+    }
+
+    if (homepageSplash) {
+        window.setTimeout(function () {
+            homepageSplash.classList.add("is-hidden");
+        }, 1600);
     }
 });
