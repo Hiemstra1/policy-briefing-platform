@@ -318,7 +318,8 @@ button.button {
 
 .ambient-orb,
 .ambient-smoke,
-.ambient-line {
+.ambient-line,
+.ambient-beam {
     position: absolute;
     opacity: 0.55;
 }
@@ -413,6 +414,51 @@ button.button {
     right: 2%;
     animation-duration: 16s;
     animation-direction: reverse;
+}
+
+.ambient-line-c {
+    width: 48vw;
+    top: 34%;
+    left: -4%;
+    animation-duration: 14s;
+}
+
+.ambient-line-d {
+    width: 40vw;
+    top: 58%;
+    right: 4%;
+    animation-duration: 18s;
+}
+
+.ambient-line-e {
+    width: 34vw;
+    bottom: 28%;
+    left: 18%;
+    animation-duration: 11s;
+    animation-direction: reverse;
+}
+
+.ambient-beam {
+    width: 28vw;
+    min-width: 260px;
+    height: 180vh;
+    top: -40vh;
+    background: linear-gradient(180deg, transparent 0%, rgba(176, 126, 55, 0.06) 28%, rgba(95, 133, 187, 0.08) 52%, transparent 100%);
+    filter: blur(18px);
+    --beam-rotation: 10deg;
+    transform: rotate(var(--beam-rotation));
+    animation: beamSweep 18s ease-in-out infinite;
+}
+
+.ambient-beam-a {
+    left: 8%;
+}
+
+.ambient-beam-b {
+    right: 4%;
+    animation-duration: 24s;
+    animation-delay: -7s;
+    --beam-rotation: -11deg;
 }
 
 .homepage-splash {
@@ -902,6 +948,7 @@ button.button {
     background: linear-gradient(90deg, transparent 0%, rgba(176, 126, 55, 0.82) 50%, transparent 100%);
     transform: translateY(-50%);
     animation: timelinePulse 7.5s ease-in-out infinite;
+    z-index: 0;
 }
 
 .week-timeline-track {
@@ -922,6 +969,7 @@ button.button {
     justify-content: space-between;
     position: relative;
     transition: transform 0.35s ease, border-color 0.35s ease;
+    z-index: 1;
 }
 
 .timeline-day::before {
@@ -1507,16 +1555,29 @@ body.menu-open {
 @keyframes timelinePulse {
     0% {
         transform: translate3d(0, -50%, 0);
-        opacity: 0;
+        opacity: 0.12;
     }
 
     20% {
-        opacity: 1;
+        opacity: 0.28;
     }
 
     100% {
         transform: translate3d(540%, -50%, 0);
-        opacity: 0;
+        opacity: 0.12;
+    }
+}
+
+@keyframes beamSweep {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) rotate(var(--beam-rotation));
+        opacity: 0.22;
+    }
+
+    50% {
+        transform: translate3d(6%, -2%, 0) rotate(calc(var(--beam-rotation) + 3deg));
+        opacity: 0.42;
     }
 }
 
@@ -1698,6 +1759,7 @@ body.menu-open {
     .ambient-smoke,
     .ambient-orb,
     .ambient-line,
+    .ambient-beam,
     .week-timeline-window::after {
         animation: none;
         transition: none;
