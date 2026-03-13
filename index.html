@@ -12,8 +12,8 @@
     h1, h2 { font-family: 'Playfair Display', serif; }
     
     .hero-bg {
-      background: linear-gradient(rgba(42,157,143,0.03) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(42,157,143,0.03) 1px, transparent 1px);
+      background: linear-gradient(rgba(42,157,143,0.08) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(42,157,143,0.08) 1px, transparent 1px);
       background-size: 40px 40px;
     }
     
@@ -21,12 +21,13 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .news-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 25px 50px -12px rgb(42 157 143 / 0.25);
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 30px 60px -15px rgb(42 157 143 / 0.4);
       border-color: #2A9D8F;
     }
     
     .dashboard-btn {
+      background: linear-gradient(135deg, #2A9D8F, #34D399);
       position: relative;
       overflow: hidden;
     }
@@ -37,7 +38,7 @@
       left: -50%;
       width: 40%;
       height: 300%;
-      background: linear-gradient(transparent, rgba(255,255,255,0.3), transparent);
+      background: linear-gradient(transparent, rgba(255,255,255,0.4), transparent);
       transform: skewX(-25deg);
       transition: left 0.6s;
     }
@@ -50,7 +51,7 @@
   <header class="bg-[#0A2540] border-b border-slate-700 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">B</div>
+        <div class="w-9 h-9 bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-xl ring-2 ring-emerald-400/30">B</div>
         <div>
           <h1 class="text-2xl font-bold tracking-tight">Beleidsbriefing</h1>
           <p class="text-xs text-slate-400 -mt-1">Platform voor beleidmakers</p>
@@ -64,13 +65,13 @@
         <a href="about.html" class="hover:text-emerald-400 transition">Over ons</a>
       </nav>
 
-      <div id="user-area" class="flex items-center gap-4">
+      <div class="flex items-center gap-4">
         <button onclick="toggleSidebar()" 
-                class="dashboard-btn flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-6 py-2.5 rounded-2xl text-sm font-medium transition border border-slate-600">
+                class="dashboard-btn flex items-center gap-2 px-7 py-3 rounded-3xl text-sm font-semibold text-white shadow-lg">
           <i class="fa-solid fa-chart-line"></i>
           <span>Mijn Dashboard</span>
         </button>
-        <div onclick="fakeLogout()" class="w-9 h-9 bg-emerald-600 rounded-2xl flex items-center justify-center text-xs font-bold cursor-pointer shadow-md">LJ</div>
+        <div onclick="fakeLogout()" class="w-9 h-9 bg-emerald-600 rounded-2xl flex items-center justify-center text-xs font-bold cursor-pointer shadow-md ring-2 ring-emerald-400/30">LJ</div>
       </div>
     </div>
   </header>
@@ -81,6 +82,7 @@
       <h2 class="text-6xl font-bold tracking-tighter mb-4">Volg beleid zonder ruis</h2>
       <p class="text-xl text-slate-300 max-w-lg mx-auto">De scherpste actuele briefings voor politici en beleidsmakers.</p>
     </div>
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-70"></div>
   </section>
 
   <!-- NEWS GRID -->
@@ -91,7 +93,6 @@
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Card 1 -->
       <div class="news-card bg-slate-900 rounded-3xl overflow-hidden border border-slate-700">
         <div class="p-6">
           <div class="flex justify-between items-center mb-4">
@@ -103,11 +104,10 @@
         </div>
         <div class="bg-slate-800 px-6 py-4 text-xs flex items-center justify-between">
           <span class="flex items-center gap-2"><i class="fa-solid fa-clock"></i> 4 min lezen</span>
-          <button onclick="window.location.href='briefing.html'" class="text-emerald-400 hover:underline font-medium">Volledige briefing →</button>
+          <button onclick="window.location.href='briefing.html'" class="bg-emerald-600 hover:bg-emerald-500 px-5 py-2 rounded-2xl text-white text-xs font-medium">Volledige briefing →</button>
         </div>
       </div>
 
-      <!-- Card 2 -->
       <div class="news-card bg-slate-900 rounded-3xl overflow-hidden border border-slate-700">
         <div class="p-6">
           <div class="flex justify-between items-center mb-4">
@@ -119,11 +119,10 @@
         </div>
         <div class="bg-slate-800 px-6 py-4 text-xs flex items-center justify-between">
           <span class="flex items-center gap-2"><i class="fa-solid fa-clock"></i> 6 min lezen</span>
-          <button onclick="window.location.href='briefing.html'" class="text-emerald-400 hover:underline font-medium">Volledige briefing →</button>
+          <button onclick="window.location.href='briefing.html'" class="bg-emerald-600 hover:bg-emerald-500 px-5 py-2 rounded-2xl text-white text-xs font-medium">Volledige briefing →</button>
         </div>
       </div>
 
-      <!-- Card 3 -->
       <div class="news-card bg-slate-900 rounded-3xl overflow-hidden border border-slate-700">
         <div class="p-6">
           <div class="flex justify-between items-center mb-4">
@@ -135,7 +134,7 @@
         </div>
         <div class="bg-slate-800 px-6 py-4 text-xs flex items-center justify-between">
           <span class="flex items-center gap-2"><i class="fa-solid fa-clock"></i> 5 min lezen</span>
-          <button onclick="window.location.href='briefing.html'" class="text-emerald-400 hover:underline font-medium">Volledige briefing →</button>
+          <button onclick="window.location.href='briefing.html'" class="bg-emerald-600 hover:bg-emerald-500 px-5 py-2 rounded-2xl text-white text-xs font-medium">Volledige briefing →</button>
         </div>
       </div>
     </div>
@@ -148,7 +147,7 @@
     </div>
   </footer>
 
-  <!-- DASHBOARD SIDEBAR (now 100% working) -->
+  <!-- DASHBOARD SIDEBAR -->
   <div id="sidebar" class="fixed top-0 right-0 h-full w-96 bg-slate-900 border-l border-slate-700 shadow-2xl transform translate-x-full transition-transform duration-300 z-[100] flex flex-col">
     <div class="p-6 border-b border-slate-700 flex justify-between items-center">
       <div>
@@ -201,18 +200,11 @@
 
   <script>
     function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('translate-x-full');
+      document.getElementById('sidebar').classList.toggle('translate-x-full');
     }
-
     function fakeLogout() {
-      alert("Je bent nu uitgelogd (demo). Log weer in om de sidebar te zien.");
+      alert("Je bent nu uitgelogd (demo).");
     }
-
-    tailwind.config = {
-      content: [],
-      theme: { extend: { colors: { navy: '#0A2540', emerald: '#2A9D8F' } } }
-    };
   </script>
 </body>
 </html>
