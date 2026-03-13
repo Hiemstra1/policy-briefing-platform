@@ -281,7 +281,8 @@ button.button {
 
 /* ===== Homepage Layout ===== */
 
-.homepage {
+.homepage,
+.site-theme {
     background:
         radial-gradient(circle at top left, rgba(122, 46, 46, 0.16), transparent 26%),
         radial-gradient(circle at 82% 16%, rgba(176, 126, 55, 0.16), transparent 22%),
@@ -291,7 +292,8 @@ button.button {
     overflow-x: hidden;
 }
 
-.homepage::before {
+.homepage::before,
+.site-theme::before {
     content: "";
     position: fixed;
     inset: 0;
@@ -303,7 +305,8 @@ button.button {
     z-index: 0;
 }
 
-.homepage > * {
+.homepage > *,
+.site-theme > * {
     position: relative;
     z-index: 1;
 }
@@ -400,6 +403,13 @@ button.button {
 .homepage-main {
     flex: 1;
     min-width: 0;
+}
+
+.site-theme main {
+    max-width: 1280px;
+    padding: 150px 40px 56px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-home {
@@ -1274,7 +1284,8 @@ body[data-auth="logged-in"] [data-mode-panel="logged-in"] {
     pointer-events: auto;
 }
 
-.homepage .site-logo-slot {
+.homepage .site-logo-slot,
+.site-theme .site-logo-slot {
     border-color: rgba(176, 126, 55, 0.24);
     background:
         linear-gradient(135deg, rgba(107, 31, 31, 0.32) 0%, rgba(176, 126, 55, 0.18) 100%),
@@ -1286,7 +1297,8 @@ body[data-auth="logged-in"] [data-mode-panel="logged-in"] {
     flex: 0 0 auto;
 }
 
-.homepage .site-logo-slot::after {
+.homepage .site-logo-slot::after,
+.site-theme .site-logo-slot::after {
     content: "BP";
     position: absolute;
     left: 18px;
@@ -1298,14 +1310,16 @@ body[data-auth="logged-in"] [data-mode-panel="logged-in"] {
     letter-spacing: 0.08em;
 }
 
-.homepage .button {
+.homepage .button,
+.site-theme .button {
     background: linear-gradient(135deg, #6b1f1f 0%, #9d6a2b 100%);
     color: #f8f3eb;
     box-shadow: 0 16px 30px rgba(107, 31, 31, 0.24);
     border-radius: 8px;
 }
 
-.homepage .button.secondary {
+.homepage .button.secondary,
+.site-theme .button.secondary {
     box-shadow: none;
 }
 
@@ -1318,12 +1332,21 @@ body[data-auth="logged-in"] [data-mode-panel="logged-in"] {
 .homepage .coverage-feature h3,
 .homepage .rail-item h3,
 .homepage .sidebar-section h3,
-.homepage .personal-sidebar h2 {
+.homepage .personal-sidebar h2,
+.site-theme .hero h2,
+.site-theme .features h2,
+.site-theme .how-it-works h2,
+.site-theme .cta h2,
+.site-theme .feature h3,
+.site-theme .about-card h3,
+.site-theme .sidebar-section h3,
+.site-theme .personal-sidebar h2 {
     color: #f7f1e8;
     font-family: Georgia, "Times New Roman", serif;
 }
 
-.homepage .icon-button {
+.homepage .icon-button,
+.site-theme .icon-button {
     color: #cba86b;
 }
 
@@ -1492,6 +1515,75 @@ body.menu-open {
     overflow: hidden;
 }
 
+.site-theme .hero,
+.site-theme .how-it-works,
+.site-theme .cta,
+.site-theme .feature,
+.site-theme .about-card,
+.site-theme .personal-sidebar {
+    background: linear-gradient(180deg, rgba(11, 15, 22, 0.48) 0%, rgba(11, 15, 22, 0.78) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 16px 30px rgba(2, 6, 15, 0.18);
+}
+
+.site-theme .hero,
+.site-theme .how-it-works,
+.site-theme .cta {
+    border-radius: 18px;
+}
+
+.site-theme .feature,
+.site-theme .about-card,
+.site-theme .personal-sidebar {
+    border-radius: 14px;
+}
+
+.site-theme .hero p,
+.site-theme .how-it-works ol,
+.site-theme .cta p,
+.site-theme .feature p,
+.site-theme .about-card p,
+.site-theme .sidebar-section p,
+.site-theme .sidebar-list {
+    color: #d6ccbe;
+}
+
+.site-theme .eyebrow,
+.site-theme .about-note,
+.site-theme .card-tag {
+    color: #cba86b;
+}
+
+.site-theme .about-note {
+    background: rgba(255, 248, 240, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-theme .button.secondary,
+.site-theme .pill,
+.site-theme .topbar-link,
+.site-theme .menu-toggle {
+    background: rgba(255, 248, 240, 0.03);
+    color: #f3e8d6;
+    border-color: rgba(176, 126, 55, 0.22);
+}
+
+.site-theme .pill.active {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #f7f1e8;
+}
+
+.site-theme .text-link,
+.site-theme .hero a:not(.button),
+.site-theme .cta a:not(.button) {
+    color: #d2a665;
+}
+
+.site-theme .floating-feed-button {
+    display: none;
+}
+
 @keyframes splashPulse {
     0%,
     100% {
@@ -1630,6 +1722,10 @@ body.menu-open {
         padding-top: 104px;
     }
 
+    .site-theme main {
+        padding: 132px 24px 48px;
+    }
+
     .hero-home {
         min-height: auto;
         padding: 56px 40px;
@@ -1696,6 +1792,11 @@ body.menu-open {
     .editorial-lead,
     .editorial-brief {
         padding: 22px;
+    }
+
+    .site-theme main {
+        padding-top: 120px;
+        padding-bottom: 36px;
     }
 
     .site-header-inner {

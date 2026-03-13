@@ -54,9 +54,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (homepageSplash) {
-        window.setTimeout(function () {
+        var splashSessionKey = "homepage-splash-seen";
+        var hasSeenSplash = false;
+
+        try {
+            hasSeenSplash = window.sessionStorage.getItem(splashSessionKey) === "true";
+        } catch (error) {
+            hasSeenSplash = false;
+        }
+
+        if (hasSeenSplash) {
             homepageSplash.classList.add("is-hidden");
-        }, 1600);
+        } else {
+            window.setTimeout(function () {
+                homepageSplash.classList.add("is-hidden");
+
+                try {
+                    window.sessionStorage.setItem(splashSessionKey, "true");
+                } catch (error) {
+                    // Ignore storage failures and fall back to showing the splash next time.
+                }
+            }, 1600);
+        }
     }
 
     function setMenuState(isOpen) {

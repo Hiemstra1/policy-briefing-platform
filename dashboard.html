@@ -2,16 +2,42 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beleidsbriefingplatform</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="site-theme" data-auth="logged-out">
 
-<header class="site-header">
-    <div class="site-header-inner">
-        <a class="site-logo-slot" href="index.html" aria-label="Home"></a>
-        <nav class="main-nav">
+<div class="video-background" aria-hidden="true">
+    <video class="video-background-media" autoplay muted loop playsinline>
+        <source src="assets/homescreen-background-white-slow.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="homepage-topbar">
+    <a class="site-logo-slot homepage-brand" href="index.html" aria-label="Home"></a>
+    <div class="homepage-topbar-actions">
+        <a class="topbar-link login-link" href="onboarding/" data-auth-link="logged-out">Inloggen</a>
+        <a class="topbar-link" href="dashboard.html" data-auth-link="logged-in">Dashboard</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu" data-menu-toggle>
+            <span class="menu-toggle-label">Menu</span>
+            <span class="menu-toggle-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+            </span>
+        </button>
+    </div>
+</div>
+
+<div class="site-menu-overlay" id="site-menu" aria-hidden="true" data-site-menu>
+    <div class="site-menu-shell">
+        <div class="site-menu-topbar">
+            <p class="site-menu-kicker">Navigatie</p>
+            <button class="site-menu-close" type="button" aria-label="Sluit menu" data-menu-close>Sluiten</button>
+        </div>
+
+        <nav class="site-menu-nav" aria-label="Hoofdmenu">
             <a href="index.html">Home</a>
             <a href="dashboard.html" aria-current="page">Dashboard</a>
             <a href="briefings/">Briefings</a>
@@ -19,11 +45,14 @@
             <a href="about/">Over ons</a>
             <a href="onboarding/">Profiel</a>
         </nav>
-        <div class="header-actions">
-            <a class="button login-link" href="onboarding/">Inloggen</a>
+
+        <div class="site-menu-footer">
+            <p>Beleidsbriefing voor professionals die sneller verbanden willen zien.</p>
+            <a class="button login-link" href="onboarding/" data-auth-link="logged-out">Inloggen</a>
+            <a class="button" href="dashboard.html" data-auth-link="logged-in">Dashboard</a>
         </div>
     </div>
-</header>
+</div>
 
 <main>
 
@@ -99,46 +128,6 @@
 </section>
 
 </main>
-
-<aside class="personal-sidebar floating-feed-panel" aria-hidden="true" data-feed-panel>
-    <div class="sidebar-header">
-        <div>
-            <p class="eyebrow">Persoonlijke modus</p>
-            <h2>Jouw feed</h2>
-        </div>
-        <button class="icon-button" type="button" aria-label="Zijbalk sluiten" data-feed-close>Sluiten</button>
-    </div>
-
-    <section class="sidebar-section">
-        <h3>Filters</h3>
-        <div class="filter-pills">
-            <button type="button" class="pill active">Klimaat</button>
-            <button type="button" class="pill">Zorg</button>
-            <button type="button" class="pill">Digitale overheid</button>
-            <button type="button" class="pill">Europa</button>
-        </div>
-    </section>
-
-    <section class="sidebar-section">
-        <h3>Snelle briefing</h3>
-        <p>Start direct een compacte briefing op basis van je laatst gevolgde dossiers.</p>
-        <a class="button" href="briefings/">Maak snelle briefing</a>
-    </section>
-
-    <section class="sidebar-section">
-        <h3>Persoonlijke signalen</h3>
-        <ul class="sidebar-list">
-            <li>3 nieuwe updates over circulaire economie</li>
-            <li>1 Kamerbrief gemarkeerd als hoge prioriteit</li>
-            <li>2 Europese consultaties sluiten deze week</li>
-        </ul>
-    </section>
-</aside>
-
-<button type="button" class="floating-feed-button" aria-label="Open mijn feed" data-feed-toggle>
-    <span class="floating-feed-icon">+</span>
-    <span class="floating-feed-label">Mijn feed</span>
-</button>
 
 <script src="js/app.js"></script>
 
