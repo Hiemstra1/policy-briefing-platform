@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        body.style.setProperty("--video-overlay-opacity", String(0.82 - strongestOverlayLift * 0.14));
+        body.style.setProperty("--video-overlay-opacity", String(0.9 - strongestOverlayLift * 0.1));
     }
 
     if (horizontalSections.length) {
@@ -299,6 +299,6 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("scroll", syncHorizontalSections, { passive: true });
         window.addEventListener("resize", syncHorizontalSections);
     } else {
-        body.style.setProperty("--video-overlay-opacity", "0.82");
+        body.style.setProperty("--video-overlay-opacity", "0.9");
     }
 });
