@@ -25,7 +25,7 @@
     <a class="site-logo-slot homepage-brand" href="index.html" aria-label="Home"></a>
     <div class="homepage-topbar-actions">
         <a class="topbar-link login-link" href="onboarding/" data-auth-link="logged-out">Inloggen</a>
-        <a class="topbar-link" href="dashboard.html" data-auth-link="logged-in">Dashboard</a>
+        <button class="topbar-link topbar-link-button" type="button" data-auth-link="logged-in" data-dashboard-toggle aria-expanded="false" aria-controls="homepage-dashboard">Dashboard</button>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu" data-menu-toggle>
             <span class="menu-toggle-label">Menu</span>
             <span class="menu-toggle-icon" aria-hidden="true">
@@ -73,37 +73,206 @@
             <div class="section-heading hot-topics-heading">
                 <div>
                     <p class="eyebrow">Hot topics</p>
-                    <h2 id="hot-topics-heading">Ontwikkelingen die het gesprek vandaag sturen</h2>
+                    <h2 id="hot-topics-heading">Vier ontwikkelingen die het gesprek vandaag sturen</h2>
                 </div>
-                <p class="hot-topics-note">Bronverwijzingen blijven zichtbaar, beeld niet nodig.</p>
+                <p class="hot-topics-note">Compact genoeg om de stroom eronder meteen mee te pakken.</p>
             </div>
 
-            <div class="hot-topics-grid">
-                <article class="hot-topic hot-topic-primary">
+            <div class="hot-topics-rotator" data-hot-topics-rotator>
+                <div class="hot-topics-grid hot-topics-grid-quad">
+                <article class="hot-topic homepage-card-persist is-active" data-hot-topic-slide>
                     <div class="hot-topic-meta">
-                        <span class="card-tag">NOS</span>
-                        <span class="source-time">Vandaag 08:10</span>
+                        <span class="card-tag">Zorg</span>
+                        <span class="source-time">NOS</span>
                     </div>
-                    <h3>Coalitie zoekt ruimte, maar uitvoeringsdiensten waarschuwen voor nieuwe stapeling.</h3>
-                    <p>
-                        Een ontwikkeling die bestuurlijk groter voelt dan de losse kop suggereert:
-                        politiek momentum botst op uitvoerbaarheid, waardoor dit dossier snel
-                        naar meerdere beleidsterreinen overslaat.
-                    </p>
+                    <h3>Ziekenhuizen trekken opnieuw aan de bel over uitvoerbaarheid en capaciteit.</h3>
                     <a href="briefings/">Open briefing</a>
                 </article>
 
-                <article class="hot-topic">
+                <div class="homepage-slot hot-topic-slot" data-hot-topic-slide>
+                    <article class="hot-topic homepage-card-swap slot-general">
+                        <div class="hot-topic-meta">
+                            <span class="card-tag">Klimaat</span>
+                            <span class="source-time">NU.nl</span>
+                        </div>
+                        <h3>Klimaatmaatregelen botsen op regionale vergunningen en planning.</h3>
+                        <a class="text-link" href="topics/">Bekijk dossier</a>
+                    </article>
+
+                    <article class="hot-topic homepage-card-personal slot-personal">
+                        <div class="hot-topic-meta">
+                            <span class="card-tag">Onderwijs</span>
+                            <span class="source-time">Voor jou</span>
+                        </div>
+                        <h3>Onderwijsbesturen vragen sneller duidelijkheid over bekostiging en personeel.</h3>
+                        <a class="text-link" href="briefings/">Open persoonlijke briefing</a>
+                    </article>
+                </div>
+
+                <article class="hot-topic homepage-card-persist" data-hot-topic-slide>
                     <div class="hot-topic-meta">
-                        <span class="card-tag">NU.nl</span>
-                        <span class="source-time">Vandaag 10:35</span>
+                        <span class="card-tag">Defensie</span>
+                        <span class="source-time">RTL Nieuws</span>
                     </div>
-                    <h3>Europese voorstellen krijgen ineens nationale urgentie door druk op planning en dekking.</h3>
-                    <p>
-                        Wat eerst een Brussel-dossier leek, schuift nu door naar kabinetsstrategie,
-                        Kamerdebatten en belangenafweging in Den Haag.
-                    </p>
+                    <h3>Defensie-uitgaven krijgen extra urgentie door NAVO-doelen en Europese druk.</h3>
                     <a class="text-link" href="topics/">Bekijk dossier</a>
+                </article>
+
+                <div class="homepage-slot hot-topic-slot" data-hot-topic-slide>
+                    <article class="hot-topic homepage-card-swap slot-general">
+                        <div class="hot-topic-meta">
+                            <span class="card-tag">Europa</span>
+                            <span class="source-time">FD</span>
+                        </div>
+                        <h3>Europese voorstellen schuiven door naar nationaal debat over dekking.</h3>
+                        <a class="text-link" href="topics/">Bekijk dossier</a>
+                    </article>
+
+                    <article class="hot-topic homepage-card-personal slot-personal">
+                        <div class="hot-topic-meta">
+                            <span class="card-tag">Vergunningen</span>
+                            <span class="source-time">Voor jou</span>
+                        </div>
+                        <h3>Vergunningen en stikstof schuiven omhoog door termijnen, bezwaar en uitvoering.</h3>
+                        <a class="text-link" href="briefings/">Open persoonlijke briefing</a>
+                    </article>
+                </div>
+                </div>
+
+                <div class="hot-topics-dots" aria-label="Hot topics navigatie">
+                    <button type="button" class="hot-topics-dot is-active" aria-label="Hot topic 1" data-hot-topic-dot="0"></button>
+                    <button type="button" class="hot-topics-dot" aria-label="Hot topic 2" data-hot-topic-dot="1"></button>
+                    <button type="button" class="hot-topics-dot" aria-label="Hot topic 3" data-hot-topic-dot="2"></button>
+                    <button type="button" class="hot-topics-dot" aria-label="Hot topic 4" data-hot-topic-dot="3"></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-feed-section" aria-labelledby="news-feed-heading">
+            <div class="section-heading news-feed-heading">
+                <div>
+                    <p class="eyebrow">Nieuwsstroom</p>
+                    <h2 id="news-feed-heading">Wat er vandaag in meerdere sectoren tegelijk beweegt</h2>
+                </div>
+                <p class="hot-topics-note">Een levend overzicht met kleine kaarten dat kan meegroeien als er meer speelt.</p>
+            </div>
+
+            <div class="news-feed-grid">
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Belasting</span>
+                    <h3>Nieuwe dekking zet druk op planning rond belastingmaatregelen.</h3>
+                    <p>FD en NOS leggen het financieel frame nu scherper bloot.</p>
+                </article>
+
+                <div class="homepage-slot">
+                    <article class="news-feed-card homepage-card-swap slot-general">
+                        <span class="card-tag">Klimaat</span>
+                        <h3>Provincies vragen meer ruimte bij uitvoering van klimaatdoelen.</h3>
+                        <p>De discussie verschuift van ambitie naar vergunning en capaciteit.</p>
+                    </article>
+                    <article class="news-feed-card homepage-card-personal slot-personal">
+                        <span class="card-tag">Onderwijs</span>
+                        <h3>Gemeenten en scholen zoeken sneller afstemming over huisvesting.</h3>
+                        <p>Voor jouw profiel is dit relevanter dan de algemene klimaatkaart.</p>
+                    </article>
+                </div>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Defensie</span>
+                    <h3>Materieel, personeel en begroting komen tegelijk op tafel.</h3>
+                    <p>Een dossier dat ineens meerdere bestuurlijke lijnen raakt.</p>
+                </article>
+
+                <div class="homepage-slot">
+                    <article class="news-feed-card homepage-card-swap slot-general">
+                        <span class="card-tag">Zorg</span>
+                        <h3>Capaciteit en wachttijden sturen het debat opnieuw.</h3>
+                        <p>Niet nieuw, maar wel weer politiek gevoeliger deze week.</p>
+                    </article>
+                    <article class="news-feed-card homepage-card-personal slot-personal">
+                        <span class="card-tag">Vergunningen</span>
+                        <h3>Vergunningstrajecten vertragen nieuwe plannen in meerdere regio's.</h3>
+                        <p>Juist daarom schuift deze kaart in jouw persoonlijke stand naar voren.</p>
+                    </article>
+                </div>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Wonen</span>
+                    <h3>Woondeals lopen aan tegen uitvoering, ruimte en tempo.</h3>
+                    <p>Gemeenten en Rijk leggen andere accenten in de berichtgeving.</p>
+                </article>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Financien</span>
+                    <h3>Begrotingsruimte blijft het stille zwaartepunt onder meerdere dossiers.</h3>
+                    <p>Veel nieuws lijkt los, maar komt hier weer samen.</p>
+                </article>
+
+                <div class="homepage-slot">
+                    <article class="news-feed-card homepage-card-swap slot-general">
+                        <span class="card-tag">Europa</span>
+                        <h3>Brusselse lijnen duiken op in nationale dossiers.</h3>
+                        <p>Consultaties en voorstellen krijgen onverwacht binnenlandse impact.</p>
+                    </article>
+                    <article class="news-feed-card homepage-card-personal slot-personal">
+                        <span class="card-tag">Belasting</span>
+                        <h3>Belastinguitvoering wint aan belang nu dekking en timing samenkomen.</h3>
+                        <p>Die verschuiving maakt deze kaart voor jou relevanter.</p>
+                    </article>
+                </div>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Justitie</span>
+                    <h3>Nieuwe beleidslijn rond handhaving vraagt snelle duiding.</h3>
+                    <p>Niet groot in volume, wel bestuurlijk gevoelig.</p>
+                </article>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Digitale overheid</span>
+                    <h3>Uitvoering en systemen blijven de stille beperkende factor.</h3>
+                    <p>Een terugkerende lijn die meerdere beleidsterreinen raakt.</p>
+                </article>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Landbouw</span>
+                    <h3>Regionale druk op stikstof en ruimte houdt aan.</h3>
+                    <p>Vooral interessant door de doorwerking naar vergunningen.</p>
+                </article>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Arbeidsmarkt</span>
+                    <h3>Personeelstekorten sturen nu ook bestuurlijke keuzes.</h3>
+                    <p>Niet alleen economische, maar ook uitvoeringsimpact groeit.</p>
+                </article>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Mobiliteit</span>
+                    <h3>Bereikbaarheid en onderhoud schuiven samen naar de voorgrond.</h3>
+                    <p>Projecttempo en capaciteit raken nu meerdere dossiers tegelijk.</p>
+                </article>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Veiligheid</span>
+                    <h3>Lokale veiligheidsdruk vraagt sneller bestuurlijk schakelen.</h3>
+                    <p>Signalen stapelen zich op tussen gemeenten, politie en beleid.</p>
+                </article>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Energie</span>
+                    <h3>Netcapaciteit blijft een stille rem op meerdere plannen.</h3>
+                    <p>Vooral zichtbaar waar uitvoering, ruimte en investeringen samenkomen.</p>
+                </article>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Jeugd</span>
+                    <h3>Jeugdzorg en gemeenten zoeken opnieuw ruimte in uitvoering.</h3>
+                    <p>Een terugkerende lijn die bestuurlijk snel weer urgent wordt.</p>
+                </article>
+
+                <article class="news-feed-card homepage-card-persist">
+                    <span class="card-tag">Asiel</span>
+                    <h3>Opvang en uitvoering blijven druk zetten op meerdere bestuurslagen.</h3>
+                    <p>Vooral zichtbaar waar capaciteit, planning en lokaal bestuur samenkomen.</p>
                 </article>
             </div>
         </section>
@@ -127,7 +296,7 @@
 
                 <div class="week-timeline-window">
                     <div class="week-timeline-track" data-horizontal-track>
-                        <article class="timeline-day timeline-day-current">
+                        <article class="timeline-day timeline-day-current homepage-card-persist">
                             <span class="timeline-day-label">Vrijdag</span>
                             <h3>Hot topic: coalitie, dekking en uitvoering vallen samen</h3>
                             <p>
@@ -141,49 +310,97 @@
                             </ul>
                         </article>
 
-                        <article class="timeline-day">
-                            <span class="timeline-day-label">Donderdag</span>
-                            <h3>Europese contouren werden binnenlands nieuws</h3>
-                            <p>
-                                NU.nl en FD brachten het als losse ontwikkeling, maar in samenhang
-                                werd zichtbaar dat de planning in Den Haag hierdoor opschuift.
-                            </p>
-                            <ul class="timeline-sources">
-                                <li>NU.nl</li>
-                                <li>FD</li>
-                                <li>Euractiv</li>
-                            </ul>
-                        </article>
+                        <div class="homepage-slot timeline-slot">
+                            <article class="timeline-day homepage-card-swap slot-general">
+                                <span class="timeline-day-label">Donderdag</span>
+                                <h3>Europese contouren werden binnenlands nieuws</h3>
+                                <p>
+                                    NU.nl en FD brachten het als losse ontwikkeling, maar in samenhang
+                                    werd zichtbaar dat de planning in Den Haag hierdoor opschuift.
+                                </p>
+                                <ul class="timeline-sources">
+                                    <li>NU.nl</li>
+                                    <li>FD</li>
+                                    <li>Euractiv</li>
+                                </ul>
+                            </article>
 
-                        <article class="timeline-day">
-                            <span class="timeline-day-label">Woensdag</span>
-                            <h3>Nieuwe cijfers veranderden de politieke toon van het debat</h3>
-                            <p>
-                                Niet de cijfers zelf, maar de interpretatie ervan zorgde voor
-                                een ander frame in media, Kamer en departementen.
-                            </p>
-                            <ul class="timeline-sources">
-                                <li>CBS</li>
-                                <li>de Volkskrant</li>
-                                <li>BNR</li>
-                            </ul>
-                        </article>
+                            <article class="timeline-day homepage-card-personal slot-personal">
+                                <span class="timeline-day-label">Donderdag</span>
+                                <h3>Defensie-uitgaven schuiven bij jou naar voren door NAVO- en begrotingsdruk</h3>
+                                <p>
+                                    Omdat defensie één van jouw voorkeursdossiers is, vervangt dit item
+                                    de algemene Europa-kaart in jouw volledige dashboardweergave.
+                                </p>
+                                <ul class="timeline-sources">
+                                    <li>NRC</li>
+                                    <li>Defensie</li>
+                                    <li>Politico</li>
+                                </ul>
+                            </article>
+                        </div>
 
-                        <article class="timeline-day">
-                            <span class="timeline-day-label">Dinsdag</span>
-                            <h3>Uitvoering kwam voor het eerst naar de voorgrond</h3>
-                            <p>
-                                Een ogenschijnlijk technische update groeide uit tot kantelpunt,
-                                omdat de gevolgen voor gemeenten en uitvoering concreter werden.
-                            </p>
-                            <ul class="timeline-sources">
-                                <li>VNG</li>
-                                <li>NU.nl</li>
-                                <li>NRC</li>
-                            </ul>
-                        </article>
+                        <div class="homepage-slot timeline-slot">
+                            <article class="timeline-day homepage-card-swap slot-general">
+                                <span class="timeline-day-label">Woensdag</span>
+                                <h3>Nieuwe cijfers veranderden de politieke toon van het debat</h3>
+                                <p>
+                                    Niet de cijfers zelf, maar de interpretatie ervan zorgde voor
+                                    een ander frame in media, Kamer en departementen.
+                                </p>
+                                <ul class="timeline-sources">
+                                    <li>CBS</li>
+                                    <li>de Volkskrant</li>
+                                    <li>BNR</li>
+                                </ul>
+                            </article>
 
-                        <article class="timeline-day">
+                            <article class="timeline-day homepage-card-personal slot-personal">
+                                <span class="timeline-day-label">Woensdag</span>
+                                <h3>Belastingmaatregelen krijgen meer gewicht door dekking, uitvoering en planning</h3>
+                                <p>
+                                    Deze plaats wordt nu gevuld met een belastingkaart omdat die themalijn
+                                    in jouw profiel belangrijker is dan de algemene cijferduiding.
+                                </p>
+                                <ul class="timeline-sources">
+                                    <li>FD</li>
+                                    <li>NOS</li>
+                                    <li>Rijksoverheid</li>
+                                </ul>
+                            </article>
+                        </div>
+
+                        <div class="homepage-slot timeline-slot">
+                            <article class="timeline-day homepage-card-swap slot-general">
+                                <span class="timeline-day-label">Dinsdag</span>
+                                <h3>Uitvoering kwam voor het eerst naar de voorgrond</h3>
+                                <p>
+                                    Een ogenschijnlijk technische update groeide uit tot kantelpunt,
+                                    omdat de gevolgen voor gemeenten en uitvoering concreter werden.
+                                </p>
+                                <ul class="timeline-sources">
+                                    <li>VNG</li>
+                                    <li>NU.nl</li>
+                                    <li>NRC</li>
+                                </ul>
+                            </article>
+
+                            <article class="timeline-day homepage-card-personal slot-personal">
+                                <span class="timeline-day-label">Dinsdag</span>
+                                <h3>Vergunningen en stikstof schuiven omhoog door regionale druk en termijnen</h3>
+                                <p>
+                                    In jouw persoonlijke stand wint deze vergunningenkaart het van de
+                                    algemene uitvoeringskaart omdat dit thema direct op jouw voorkeuren aansluit.
+                                </p>
+                                <ul class="timeline-sources">
+                                    <li>Provincies</li>
+                                    <li>BNR</li>
+                                    <li>Trouw</li>
+                                </ul>
+                            </article>
+                        </div>
+
+                        <article class="timeline-day homepage-card-persist">
                             <span class="timeline-day-label">Maandag</span>
                             <h3>De eerste signalen zaten nog verstopt in verspreide berichtgeving</h3>
                             <p>
@@ -201,84 +418,127 @@
             </div>
         </section>
 
-        <section class="coverage-layout" aria-labelledby="updates-heading">
-            <div class="coverage-main content-panel">
-                <div class="section-heading">
-                    <div>
-                        <p class="eyebrow">Nieuwe signalen</p>
-                        <h2 id="updates-heading">Wat nu aandacht vraagt</h2>
-                    </div>
-                    <a class="text-link" href="dashboard.html">Open dashboard</a>
+        <section class="topic-directory" aria-labelledby="topic-directory-heading">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Onderwerpen</p>
+                    <h2 id="topic-directory-heading">Ga direct naar een onderwerp of sector</h2>
                 </div>
-
-                <article class="coverage-feature">
-                    <span class="card-tag">Dossierlijn</span>
-                    <h3>Kamer en kabinet zetten de toon, maar uitvoering bepaalt de echte gevoeligheid.</h3>
-                    <p>
-                        Nieuwe agenda-updates en debatmomenten zorgen voor directe briefingverzoeken.
-                        Tegelijk verschuift de relevantie van nieuws naar bestuurlijke haalbaarheid,
-                        waardoor dossiers sneller om extra context vragen.
-                    </p>
-                </article>
+                <p class="hot-topics-note">Elke ingang kan uitkomen op een eigen verzamelpagina met relevante nieuwsartikelen.</p>
             </div>
 
-            <aside class="coverage-rail" aria-label="Volglijnen">
-                <article class="rail-item rail-item-accent">
-                    <span class="card-tag">Volglijn 01</span>
-                    <h3>Europese dossiers</h3>
-                    <p>
-                        Consultaties en voorstellen vragen om snelle vertaling naar nationale
-                        uitvoerbaarheid en politieke gevoeligheid.
-                    </p>
-                </article>
-
-                <article class="rail-item">
-                    <span class="card-tag">Volglijn 02</span>
-                    <h3>Uitvoering en impact</h3>
-                    <p>
-                        Signalering rond uitvoeringsdruk helpt om briefings niet alleen op
-                        nieuwswaarde, maar ook op praktische gevolgen te rangschikken.
-                    </p>
-                </article>
-            </aside>
+            <div class="topic-directory-grid">
+                <a class="topic-directory-card" href="topics/">
+                    <span class="card-tag">Onderwerp</span>
+                    <h3>Zorg</h3>
+                    <p>Nieuws, signalen en bestuurlijke drukpunten rond zorg en uitvoering.</p>
+                </a>
+                <a class="topic-directory-card" href="topics/">
+                    <span class="card-tag">Onderwerp</span>
+                    <h3>Klimaat</h3>
+                    <p>Van doelstelling tot vergunning, uitvoering en regionale spanning.</p>
+                </a>
+                <a class="topic-directory-card" href="topics/">
+                    <span class="card-tag">Onderwerp</span>
+                    <h3>Defensie</h3>
+                    <p>Begroting, personeel, materieel en Europese druk in één overzicht.</p>
+                </a>
+                <a class="topic-directory-card" href="topics/">
+                    <span class="card-tag">Onderwerp</span>
+                    <h3>Belasting</h3>
+                    <p>Dekking, uitvoering en politieke timing rond fiscaliteit en begroting.</p>
+                </a>
+                <a class="topic-directory-card" href="topics/">
+                    <span class="card-tag">Onderwerp</span>
+                    <h3>Onderwijs</h3>
+                    <p>Bekostiging, personeel, huisvesting en bestuurlijke afstemming.</p>
+                </a>
+                <a class="topic-directory-card" href="topics/">
+                    <span class="card-tag">Onderwerp</span>
+                    <h3>Vergunningen</h3>
+                    <p>Regionale uitvoering, stikstof, bezwaar en doorlooptijden.</p>
+                </a>
+                <a class="topic-directory-card" href="topics/">
+                    <span class="card-tag">Onderwerp</span>
+                    <h3>Wonen</h3>
+                    <p>Projecttempo, woningbouw en bestuurlijke knelpunten in het veld.</p>
+                </a>
+                <a class="topic-directory-card" href="topics/">
+                    <span class="card-tag">Onderwerp</span>
+                    <h3>Financien</h3>
+                    <p>Alles wat begroting, dekking en financiële afwegingen samenbrengt.</p>
+                </a>
+            </div>
         </section>
 
     </main>
 </div>
 
-<aside class="personal-sidebar floating-feed-panel" aria-hidden="true" data-feed-panel>
-    <div class="sidebar-header">
+<div class="homepage-dashboard-backdrop" aria-hidden="true" data-home-dashboard-backdrop></div>
+
+<aside class="homepage-dashboard-layer" id="homepage-dashboard" aria-hidden="true" data-home-dashboard>
+    <div class="homepage-dashboard-head">
         <div>
-            <p class="eyebrow">Persoonlijke modus</p>
-            <h2>Jouw feed</h2>
+            <p class="eyebrow">Persoonlijke homepage</p>
+            <h2>Jouw dashboardlaag</h2>
         </div>
-        <button class="icon-button" type="button" aria-label="Zijbalk sluiten" data-feed-close>Sluiten</button>
+        <div class="homepage-dashboard-head-actions">
+            <button class="menu-toggle homepage-dashboard-menu" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu" data-menu-toggle>
+                <span class="menu-toggle-label">Menu</span>
+                <span class="menu-toggle-icon" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+            <button class="site-menu-close" type="button" aria-label="Sluit dashboardlaag" data-dashboard-close>Sluiten</button>
+        </div>
     </div>
 
-    <section class="sidebar-section">
-        <h3>Filters</h3>
-        <div class="filter-pills">
-            <button type="button" class="pill active">Klimaat</button>
-            <button type="button" class="pill">Zorg</button>
-            <button type="button" class="pill">Digitale overheid</button>
-            <button type="button" class="pill">Europa</button>
-        </div>
-    </section>
+    <div class="homepage-dashboard-content">
+        <section class="homepage-dashboard-lead">
+            <span class="card-tag">Nu voor jou</span>
+            <h3>Jouw gevolgde dossiers schuiven vandaag richting uitvoering, Europa en zorg.</h3>
+            <p>
+                Deze laag blijft verbonden met de algemene homepage, maar herordent wat jij ziet op basis van
+                jouw profiel, briefinggedrag en gevolgde thema's.
+            </p>
+            <div class="homepage-dashboard-actions">
+                <a class="button" href="briefings/">Open snelle briefing</a>
+                <button class="button secondary" type="button" data-dashboard-expand>Volledig dashboard</button>
+            </div>
+        </section>
 
-    <section class="sidebar-section">
-        <h3>Snelle briefing</h3>
-        <p>Start direct een compacte briefing op basis van je laatst gevolgde dossiers.</p>
-        <a class="button" href="briefings/">Maak snelle briefing</a>
-    </section>
+        <section class="homepage-dashboard-metrics" aria-label="Persoonlijke status">
+            <article class="homepage-dashboard-card">
+                <span class="card-tag">Actief</span>
+                <h3>4 thema's</h3>
+                <p>Klimaat, zorg, digitale overheid en Europa sturen jouw rangschikking vandaag.</p>
+            </article>
+            <article class="homepage-dashboard-card">
+                <span class="card-tag">Signalen</span>
+                <h3>7 updates</h3>
+                <p>Drie briefingwaardig, twee bronchecks en twee signalen met hoge beleidsimpact.</p>
+            </article>
+        </section>
 
-    <section class="sidebar-section">
-        <h3>Persoonlijke signalen</h3>
-        <ul class="sidebar-list">
-            <li>3 nieuwe updates over circulaire economie</li>
-            <li>1 Kamerbrief gemarkeerd als hoge prioriteit</li>
-            <li>2 Europese consultaties sluiten deze week</li>
-        </ul>
-    </section>
+        <section class="homepage-dashboard-stream" aria-label="Persoonlijke signalen">
+            <article class="homepage-dashboard-item homepage-dashboard-card">
+                <span class="card-tag">Bovenaan</span>
+                <h3>Kamerbrief over uitvoering staat op jouw prioriteitenlijst</h3>
+                <p>Raakt direct aan jouw gevolgde dossiers en krijgt daarom voorrang boven algemeen nieuws.</p>
+            </article>
+            <article class="homepage-dashboard-item homepage-dashboard-card">
+                <span class="card-tag">Aansluitend</span>
+                <h3>Maak een briefing van de weeklijn die je net hebt gezien</h3>
+                <p>De persoonlijke laag kan de algemene tijdlijn meteen omzetten naar een compacte briefing.</p>
+            </article>
+            <article class="homepage-dashboard-item homepage-dashboard-card">
+                <span class="card-tag">Bronweging</span>
+                <h3>NOS, VNG en FD wegen vandaag het zwaarst mee in jouw overzicht</h3>
+                <p>Niet omdat ze algemeen het grootst zijn, maar omdat ze jouw thema's het meest raken.</p>
+            </article>
+        </section>
+    </div>
 </aside>
 
 <script src="js/app.js"></script>

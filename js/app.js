@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     var body = document.body;
+    var authStorageKey = "policy-auth-state";
     var modeHeadline = document.getElementById("mode-headline");
     var modeDescription = document.getElementById("mode-description");
     var feedPanel = document.querySelector("[data-feed-panel]");
@@ -8,9 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
     var feedClose = document.querySelector("[data-feed-close]");
     var homepageSplash = document.querySelector("[data-homepage-splash]");
     var menuOverlay = document.querySelector("[data-site-menu]");
-    var menuToggle = document.querySelector("[data-menu-toggle]");
+    var menuToggles = document.querySelectorAll("[data-menu-toggle]");
     var menuClose = document.querySelector("[data-menu-close]");
+    var dashboardToggle = document.querySelector("[data-dashboard-toggle]");
+    var dashboardLayer = document.querySelector("[data-home-dashboard]");
+    var dashboardClose = document.querySelector("[data-dashboard-close]");
+    var dashboardBackdrop = document.querySelector("[data-home-dashboard-backdrop]");
+    var dashboardExpand = document.querySelector("[data-dashboard-expand]");
     var horizontalSections = document.querySelectorAll("[data-horizontal-section]");
+    var hotTopicsRotator = document.querySelector("[data-hot-topics-rotator]");
+    var hotTopicSlides = hotTopicsRotator ? hotTopicsRotator.querySelectorAll("[data-hot-topic-slide]") : [];
+    var hotTopicDots = hotTopicsRotator ? hotTopicsRotator.querySelectorAll("[data-hot-topic-dot]") : [];
+    var authSetters = document.querySelectorAll("[data-auth-set]");
 
     var modeCopy = {
         "logged-out": {
@@ -23,6 +33,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    function persistAuthState(authState) {
+        try {
+            window.localStorage.setItem(authStorageKey, authState);
+        } catch (error) {
+            // Ignore storage failures and continue with the in-memory state.
+        }
+    }
+
+    function applyAuthState(authState) {
+        body.setAttribute("data-auth", authState);
+    }
+
+    function readAuthState() {
+        try {
+            return window.localStorage.getItem(authStorageKey);
+        } catch (error) {
+            return null;
+        }
+    }
+
     function syncHomepageState() {
         var authState = body.getAttribute("data-auth") || "logged-out";
 
@@ -31,9 +61,15 @@ document.addEventListener("DOMContentLoaded", function () {
             modeDescription.textContent = modeCopy[authState].description;
         }
 
-        if (feedPanel) {
-            feedPanel.setAttribute("aria-hidden", "true");
+        if (dashboardLayer && authState !== "logged-in") {
+            setDashboardState(false);
         }
+    }
+
+    var storedAuthState = readAuthState();
+
+    if (storedAuthState === "logged-in" || storedAuthState === "logged-out") {
+        applyAuthState(storedAuthState);
     }
 
     if (feedToggle && feedPanel) {
@@ -79,20 +115,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function setMenuState(isOpen) {
-        if (!menuOverlay || !menuToggle) {
+        if (!menuOverlay || !menuToggles.length) {
             return;
         }
 
         menuOverlay.classList.toggle("is-open", isOpen);
         menuOverlay.setAttribute("aria-hidden", isOpen ? "false" : "true");
-        menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        menuToggles.forEach(function (toggle) {
+            toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
         body.classList.toggle("menu-open", isOpen);
     }
 
-    if (menuToggle && menuOverlay) {
-        menuToggle.addEventListener("click", function () {
-            var isOpen = menuOverlay.getAttribute("aria-hidden") === "false";
-            setMenuState(!isOpen);
+    if (menuToggles.length && menuOverlay) {
+        menuToggles.forEach(function (toggle) {
+            toggle.addEventListener("click", function () {
+                var isOpen = menuOverlay.getAttribute("aria-hidden") === "false";
+                setMenuState(!isOpen);
+            });
         });
     }
 
@@ -108,6 +148,115 @@ document.addEventListener("DOMContentLoaded", function () {
                 setMenuState(false);
             }
         });
+    }
+
+    function setDashboardState(isOpen) {
+        if (!dashboardLayer || !dashboardToggle) {
+            return;
+        }
+
+        if ((body.getAttribute("data-auth") || "logged-out") !== "logged-in") {
+            isOpen = false;
+        }
+
+        dashboardLayer.setAttribute("aria-hidden", isOpen ? "false" : "true");
+        dashboardToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        body.classList.toggle("dashboard-open", isOpen);
+
+        if (!isOpen) {
+            body.classList.remove("dashboard-expanded");
+        }
+    }
+
+    if (dashboardToggle && dashboardLayer) {
+        dashboardToggle.addEventListener("click", function () {
+            var isOpen = dashboardLayer.getAttribute("aria-hidden") === "false";
+            setDashboardState(!isOpen);
+        });
+    }
+
+    if (dashboardClose) {
+        dashboardClose.addEventListener("click", function () {
+            setDashboardState(false);
+        });
+    }
+
+    if (dashboardBackdrop) {
+        dashboardBackdrop.addEventListener("click", function () {
+            setDashboardState(false);
+        });
+    }
+
+    if (dashboardExpand && dashboardLayer) {
+        dashboardExpand.addEventListener("click", function () {
+            setDashboardState(true);
+            body.classList.add("dashboard-expanded");
+        });
+    }
+
+    if (authSetters.length) {
+        authSetters.forEach(function (element) {
+            element.addEventListener("click", function () {
+                var nextState = element.getAttribute("data-auth-set");
+
+                if (!nextState) {
+                    return;
+                }
+
+                applyAuthState(nextState);
+                persistAuthState(nextState);
+            });
+        });
+    }
+
+    if (hotTopicsRotator && hotTopicSlides.length > 1) {
+        var hotTopicIndex = 0;
+        var hotTopicTimer = null;
+        var hotTopicIntervalMs = 5200;
+
+        function setHotTopic(index) {
+            hotTopicIndex = index;
+
+            hotTopicSlides.forEach(function (slide, slideIndex) {
+                slide.classList.toggle("is-active", slideIndex === index);
+            });
+
+            hotTopicDots.forEach(function (dot, dotIndex) {
+                dot.classList.toggle("is-active", dotIndex === index);
+                dot.setAttribute("aria-pressed", dotIndex === index ? "true" : "false");
+            });
+        }
+
+        function startHotTopicRotation() {
+            if (hotTopicTimer) {
+                window.clearInterval(hotTopicTimer);
+            }
+
+            hotTopicTimer = window.setInterval(function () {
+                setHotTopic((hotTopicIndex + 1) % hotTopicSlides.length);
+            }, hotTopicIntervalMs);
+        }
+
+        hotTopicDots.forEach(function (dot, dotIndex) {
+            dot.addEventListener("click", function () {
+                setHotTopic(dotIndex);
+                startHotTopicRotation();
+            });
+        });
+
+        document.addEventListener("visibilitychange", function () {
+            if (document.hidden) {
+                if (hotTopicTimer) {
+                    window.clearInterval(hotTopicTimer);
+                    hotTopicTimer = null;
+                }
+            } else {
+                startHotTopicRotation();
+            }
+        });
+
+        setHotTopic(0);
+        startHotTopicRotation();
     }
 
     function syncHorizontalSections() {
